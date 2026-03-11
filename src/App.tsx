@@ -56,12 +56,12 @@ const Card = ({ children, className, title, subtitle, icon: Icon }: { children: 
     {(title || Icon) && (
       <div className="flex items-center justify-between mb-8">
         <div>
-          {title && <h3 className="text-2xl font-display font-bold text-white tracking-tight uppercase">{title}</h3>}
-          {subtitle && <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-[0.2em] mt-2">{subtitle}</p>}
+          {title && <h3 className="text-2xl font-display font-bold text-slate-900 tracking-tight uppercase">{title}</h3>}
+          {subtitle && <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] mt-2">{subtitle}</p>}
         </div>
         {Icon && (
-          <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-            <Icon className="w-5 h-5 text-brand-primary" />
+          <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <Icon className="w-5 h-5 text-slate-900" />
           </div>
         )}
       </div>
@@ -72,17 +72,17 @@ const Card = ({ children, className, title, subtitle, icon: Icon }: { children: 
 
 const StatCard = ({ label, value, icon: Icon, trend, color = "indigo" }: { label: string, value: string, icon: any, trend?: string, color?: string }) => {
   const accentColors: Record<string, string> = {
-    indigo: "text-brand-primary",
-    emerald: "text-brand-secondary",
-    rose: "text-brand-accent",
-    amber: "text-yellow-400",
+    indigo: "text-slate-900",
+    emerald: "text-blue-600",
+    rose: "text-rose-600",
+    amber: "text-amber-600",
   };
 
   return (
     <Card className="p-6 relative overflow-hidden group">
-      <div className="absolute top-0 right-0 w-24 h-24 bg-brand-primary/5 blur-3xl rounded-full -mr-12 -mt-12 group-hover:bg-brand-primary/10 transition-all" />
+      <div className="absolute top-0 right-0 w-24 h-24 bg-slate-900/5 blur-3xl rounded-full -mr-12 -mt-12 group-hover:bg-slate-900/10 transition-all" />
       <div className="flex justify-between items-start mb-6 relative z-10">
-        <div className="p-3 bg-white/5 border border-white/10 rounded-xl group-hover:border-brand-primary/50 transition-all">
+        <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl group-hover:border-slate-900/50 transition-all">
           <Icon className={cn("w-5 h-5", accentColors[color])} />
         </div>
         {trend && (
@@ -92,8 +92,8 @@ const StatCard = ({ label, value, icon: Icon, trend, color = "indigo" }: { label
             className={cn(
               "text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-tighter",
               trend.startsWith('+') 
-                ? "bg-brand-accent/10 text-brand-accent border border-brand-accent/20" 
-                : "bg-brand-primary/10 text-brand-primary border border-brand-primary/20"
+                ? "bg-rose-50 text-rose-600 border border-rose-100" 
+                : "bg-emerald-50 text-emerald-600 border border-emerald-100"
             )}
           >
             {trend}
@@ -102,7 +102,7 @@ const StatCard = ({ label, value, icon: Icon, trend, color = "indigo" }: { label
       </div>
       <div className="relative z-10">
         <p className="stat-label mb-1">{label}</p>
-        <p className="stat-value text-white">{value}</p>
+        <p className="stat-value text-slate-900">{value}</p>
       </div>
     </Card>
   );
@@ -139,7 +139,7 @@ const LoanForm = ({ onSuccess, initialData, isEditing }: { onSuccess: () => void
     <form onSubmit={handleSubmit} className="space-y-8">
       <div className="grid grid-cols-1 gap-8">
         <div className="space-y-3">
-          <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Account_Name</label>
+          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Account_Name</label>
           <input 
             type="text" 
             required
@@ -151,9 +151,9 @@ const LoanForm = ({ onSuccess, initialData, isEditing }: { onSuccess: () => void
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-3">
-            <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Principal_Amount</label>
+            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Principal_Amount</label>
             <div className="relative">
-              <span className="absolute left-5 top-1/2 -translate-y-1/2 text-brand-primary font-bold">₹</span>
+              <span className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-900 font-bold">₹</span>
               <input 
                 type="number" 
                 required
@@ -165,7 +165,7 @@ const LoanForm = ({ onSuccess, initialData, isEditing }: { onSuccess: () => void
             </div>
           </div>
           <div className="space-y-3">
-            <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Interest_Rate (%)</label>
+            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Interest_Rate (%)</label>
             <input 
               type="number" 
               step="0.1"
@@ -179,7 +179,7 @@ const LoanForm = ({ onSuccess, initialData, isEditing }: { onSuccess: () => void
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-3">
-            <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Tenure (Months)</label>
+            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Tenure (Months)</label>
             <input 
               type="number" 
               required
@@ -190,7 +190,7 @@ const LoanForm = ({ onSuccess, initialData, isEditing }: { onSuccess: () => void
             />
           </div>
           <div className="space-y-3">
-            <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Start_Date</label>
+            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Start_Date</label>
             <input 
               type="date" 
               required
@@ -249,12 +249,12 @@ const Simulator = ({ loan, darkMode }: { loan: Loan, darkMode: boolean }) => {
     <div className="space-y-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="space-y-8">
-          <div className="flex p-1.5 bg-white/5 border border-white/5 rounded-xl mb-4">
+          <div className="flex p-1.5 bg-slate-100 border border-slate-200 rounded-xl mb-4">
             <button 
               onClick={() => setActiveStrategy('extra')}
               className={cn(
                 "flex-1 py-3 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all",
-                activeStrategy === 'extra' ? "bg-brand-primary text-black shadow-[0_0_15px_rgba(0,255,148,0.3)]" : "text-zinc-500 hover:text-zinc-300"
+                activeStrategy === 'extra' ? "bg-white text-slate-900 shadow-sm" : "text-slate-400 hover:text-slate-600"
               )}
             >
               Monthly_Extra
@@ -263,7 +263,7 @@ const Simulator = ({ loan, darkMode }: { loan: Loan, darkMode: boolean }) => {
               onClick={() => setActiveStrategy('lump')}
               className={cn(
                 "flex-1 py-3 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all",
-                activeStrategy === 'lump' ? "bg-brand-primary text-black shadow-[0_0_15px_rgba(0,255,148,0.3)]" : "text-zinc-500 hover:text-zinc-300"
+                activeStrategy === 'lump' ? "bg-white text-slate-900 shadow-sm" : "text-slate-400 hover:text-slate-600"
               )}
             >
               Lump_Sum
@@ -272,13 +272,13 @@ const Simulator = ({ loan, darkMode }: { loan: Loan, darkMode: boolean }) => {
 
           <div className="space-y-6">
             <div className={cn("space-y-3 transition-all duration-300", activeStrategy !== 'extra' && "opacity-20 grayscale pointer-events-none")}>
-              <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Extra_Monthly_Payment</label>
+              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Extra_Monthly_Payment</label>
               <div className="relative">
-                <span className="absolute left-5 top-1/2 -translate-y-1/2 text-brand-primary font-bold text-xl">₹</span>
+                <span className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-900 font-bold text-xl">₹</span>
                 <input 
                   type="number" 
                   disabled={activeStrategy !== 'extra'}
-                  className="w-full pl-12 pr-6 py-5 bg-white/5 border border-white/10 rounded-xl focus:border-brand-primary transition-all font-display font-bold text-2xl outline-none text-white"
+                  className="w-full pl-12 pr-6 py-5 bg-slate-50 border border-slate-200 rounded-xl focus:border-slate-900 transition-all font-display font-bold text-2xl outline-none text-slate-900"
                   placeholder="0"
                   value={extraPayment}
                   onChange={e => setExtraPayment(e.target.value)}
@@ -288,13 +288,13 @@ const Simulator = ({ loan, darkMode }: { loan: Loan, darkMode: boolean }) => {
 
             <div className={cn("grid grid-cols-2 gap-6 transition-all duration-300", activeStrategy !== 'lump' && "opacity-20 grayscale pointer-events-none")}>
               <div className="space-y-3">
-                <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Lump_Sum_Amount</label>
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Lump_Sum_Amount</label>
                 <div className="relative">
-                  <span className="absolute left-5 top-1/2 -translate-y-1/2 text-brand-primary font-bold text-xl">₹</span>
+                  <span className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-900 font-bold text-xl">₹</span>
                   <input 
                     type="number" 
                     disabled={activeStrategy !== 'lump'}
-                    className="w-full pl-12 pr-6 py-5 bg-white/5 border border-white/10 rounded-xl focus:border-brand-primary transition-all font-display font-bold text-2xl outline-none text-white"
+                    className="w-full pl-12 pr-6 py-5 bg-slate-50 border border-slate-200 rounded-xl focus:border-slate-900 transition-all font-display font-bold text-2xl outline-none text-slate-900"
                     placeholder="0"
                     value={lumpSum}
                     onChange={e => setLumpSum(e.target.value)}
@@ -302,11 +302,11 @@ const Simulator = ({ loan, darkMode }: { loan: Loan, darkMode: boolean }) => {
                 </div>
               </div>
               <div className="space-y-3">
-                <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Target_Month</label>
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Target_Month</label>
                 <input 
                   type="number" 
                   disabled={activeStrategy !== 'lump'}
-                  className="w-full px-6 py-5 bg-white/5 border border-white/10 rounded-xl focus:border-brand-primary transition-all font-display font-bold text-2xl outline-none text-white"
+                  className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-xl focus:border-slate-900 transition-all font-display font-bold text-2xl outline-none text-slate-900"
                   placeholder="1"
                   value={lumpSumMonth}
                   onChange={e => setLumpSumMonth(e.target.value)}
@@ -336,48 +336,48 @@ const Simulator = ({ loan, darkMode }: { loan: Loan, darkMode: boolean }) => {
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="h-full bg-brand-primary/5 border border-brand-primary/20 rounded-2xl p-10 relative overflow-hidden"
+              className="h-full bg-blue-50 border border-blue-100 rounded-2xl p-10 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 blur-[100px] rounded-full -mr-32 -mt-32" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/50 blur-[100px] rounded-full -mr-32 -mt-32" />
               
               <div className="relative z-10 space-y-10">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-brand-primary text-black rounded-xl">
+                  <div className="p-3 bg-slate-900 text-white rounded-xl">
                     <TrendingDown className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="text-[10px] font-black text-brand-primary uppercase tracking-[0.3em]">Simulation_Result</h4>
-                    <p className="text-3xl font-display font-black text-white tracking-tighter">SUCCESSFUL_PROJECTION</p>
+                    <h4 className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">Simulation_Result</h4>
+                    <p className="text-3xl font-display font-black text-slate-900 tracking-tighter">SUCCESSFUL_PROJECTION</p>
                   </div>
                 </div>
 
                 <div className="space-y-8">
                   <div>
-                    <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] mb-2">Total_Interest_Saved</p>
-                    <p className="text-5xl font-display font-black text-brand-primary tracking-tighter">{formatCurrency(simulation.interestSaved)}</p>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Total_Interest_Saved</p>
+                    <p className="text-5xl font-display font-black text-blue-600 tracking-tighter">{formatCurrency(simulation.interestSaved)}</p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-10">
                     <div>
-                      <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] mb-2">Time_Saved</p>
-                      <p className="text-4xl font-display font-black text-white tracking-tighter">{simulation.monthsSaved} <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Months</span></p>
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Time_Saved</p>
+                      <p className="text-4xl font-display font-black text-slate-900 tracking-tighter">{simulation.monthsSaved} <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Months</span></p>
                     </div>
                     <div>
-                      <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] mb-2">New_Tenure</p>
-                      <p className="text-4xl font-display font-black text-white tracking-tighter">{simulation.newTenure} <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Months</span></p>
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">New_Tenure</p>
+                      <p className="text-4xl font-display font-black text-slate-900 tracking-tighter">{simulation.newTenure} <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Months</span></p>
                     </div>
                   </div>
 
-                  <div className="pt-10 border-t border-white/10">
+                  <div className="pt-10 border-t border-slate-200">
                     <div className="flex justify-between items-center mb-4">
-                      <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em]">Acceleration_Factor</p>
-                      <span className="text-xl font-display font-black text-brand-primary">+{((simulation.monthsSaved / loan.tenure_months) * 100).toFixed(1)}% FASTER</span>
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Acceleration_Factor</p>
+                      <span className="text-xl font-display font-black text-blue-600">+{((simulation.monthsSaved / loan.tenure_months) * 100).toFixed(1)}% FASTER</span>
                     </div>
-                    <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
                       <motion.div 
                         initial={{ width: 0 }}
                         animate={{ width: `${Math.min(100, (simulation.newTenure / loan.tenure_months) * 100)}%` }}
-                        className="h-full bg-brand-primary shadow-[0_0_15px_#00FF94] rounded-full"
+                        className="h-full bg-blue-600 rounded-full"
                       />
                     </div>
                   </div>
@@ -385,12 +385,12 @@ const Simulator = ({ loan, darkMode }: { loan: Loan, darkMode: boolean }) => {
               </div>
             </motion.div>
           ) : (
-            <div className="h-full bg-zinc-900/50 border border-white/5 border-dashed rounded-2xl flex items-center justify-center p-12">
+            <div className="h-full bg-slate-50 border border-slate-200 border-dashed rounded-2xl flex items-center justify-center p-12">
               <div className="text-center">
-                <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Clock className="w-8 h-8 text-zinc-700" />
+                <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Clock className="w-8 h-8 text-slate-300" />
                 </div>
-                <p className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.3em]">Awaiting_Input_Parameters</p>
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Awaiting_Input_Parameters</p>
               </div>
             </div>
           )}
@@ -448,8 +448,8 @@ const LoanDetailView = ({ loanId, onBack, darkMode, onDelete, onEdit }: { loanId
   if (loading || !loan) {
     return (
       <div className="flex flex-col items-center justify-center py-32 space-y-8">
-        <div className="w-16 h-16 border-4 border-white/5 border-t-brand-primary rounded-full animate-spin" />
-        <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.3em] animate-pulse">Analyzing_Loan_Structure...</p>
+        <div className="w-16 h-16 border-4 border-slate-100 border-t-slate-900 rounded-full animate-spin" />
+        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] animate-pulse">Analyzing_Loan_Structure...</p>
       </div>
     );
   }
@@ -466,15 +466,15 @@ const LoanDetailView = ({ loanId, onBack, darkMode, onDelete, onEdit }: { loanId
     <div className="space-y-12 pb-20">
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
         <div className="flex items-center gap-8">
-          <button onClick={onBack} className="secondary-button !p-4 rounded-full border-white/10 hover:border-brand-primary/50 transition-all">
+          <button onClick={onBack} className="secondary-button !p-4 rounded-full border-slate-200 hover:border-slate-900 transition-all">
             <ChevronRight className="w-5 h-5 rotate-180" />
           </button>
           <div>
-            <h2 className="text-5xl font-display font-black text-white leading-none tracking-tighter uppercase">{loan.name}</h2>
+            <h2 className="text-5xl font-display font-black text-slate-900 leading-none tracking-tighter uppercase">{loan.name}</h2>
             <div className="flex items-center gap-4 mt-3">
-              <span className="text-[9px] font-black text-zinc-500 uppercase tracking-[0.3em]">ID: {loan.id.toString().padStart(4, '0')}</span>
-              <span className="w-1.5 h-1.5 bg-brand-primary rounded-full shadow-[0_0_10px_#00FF94]"></span>
-              <span className="text-[9px] font-black text-brand-primary uppercase tracking-[0.3em]">Status: Operational</span>
+              <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em]">ID: {loan.id.toString().padStart(4, '0')}</span>
+              <span className="w-1.5 h-1.5 bg-slate-900 rounded-full"></span>
+              <span className="text-[9px] font-black text-slate-900 uppercase tracking-[0.3em]">Status: Operational</span>
             </div>
           </div>
         </div>
@@ -523,23 +523,24 @@ const LoanDetailView = ({ loanId, onBack, darkMode, onDelete, onEdit }: { loanId
                       <stop offset="95%" stopColor="#00D1FF" stopOpacity={0}/>
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
-                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#52525b', fontSize: 9, fontWeight: 800}} dy={10} />
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 9, fontWeight: 800}} dy={10} />
                   <YAxis hide />
                   <Tooltip 
                     contentStyle={{ 
-                      backgroundColor: '#09090b',
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      borderRadius: '8px',
-                      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)',
+                      backgroundColor: '#fff',
+                      border: '1px solid #e2e8f0',
+                      borderRadius: '12px',
+                      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
                       fontSize: '10px',
                       fontWeight: 'bold',
-                      textTransform: 'uppercase'
+                      textTransform: 'uppercase',
+                      color: '#0f172a'
                     }}
                     formatter={(value: number) => formatCurrency(value)}
                   />
-                  <Area type="monotone" dataKey="Principal" stroke="#00FF94" strokeWidth={3} fillOpacity={1} fill="url(#colorPrincipal)" />
-                  <Area type="monotone" dataKey="Interest" stroke="#00D1FF" strokeWidth={3} fillOpacity={1} fill="url(#colorInterest)" />
+                  <Area type="monotone" dataKey="Principal" stroke="#0f172a" strokeWidth={3} fillOpacity={1} fill="url(#colorPrincipal)" />
+                  <Area type="monotone" dataKey="Interest" stroke="#3b82f6" strokeWidth={3} fillOpacity={1} fill="url(#colorInterest)" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -548,8 +549,8 @@ const LoanDetailView = ({ loanId, onBack, darkMode, onDelete, onEdit }: { loanId
           <Card title="Amortization_Schedule" subtitle="FULL_BREAKDOWN_LOGS">
             <div className="overflow-x-auto mt-8 max-h-[600px] overflow-y-auto custom-scrollbar rounded-xl border border-white/5">
               <table className="w-full text-left border-collapse">
-                <thead className="sticky top-0 bg-white/5 border-b border-white/10 z-10">
-                  <tr className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-500">
+                <thead className="sticky top-0 bg-slate-50 border-b border-slate-200 z-10">
+                  <tr className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">
                     <th className="p-5">Month</th>
                     <th className="p-5">EMI</th>
                     <th className="p-5">Principal</th>
@@ -558,18 +559,18 @@ const LoanDetailView = ({ loanId, onBack, darkMode, onDelete, onEdit }: { loanId
                     <th className="p-5">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5">
+                <tbody className="divide-y divide-slate-100">
                   {loan.schedule.map((item) => (
-                    <tr key={item.month} className="text-[11px] font-bold text-zinc-300 hover:bg-white/5 transition-colors">
+                    <tr key={item.month} className="text-[11px] font-bold text-slate-600 hover:bg-slate-50 transition-colors">
                       <td className="p-5 font-mono">{format(addMonths(new Date(loan.start_date), item.month - 1), 'MMM yyyy')}</td>
                       <td className="p-5">{formatCurrency(item.emi)}</td>
-                      <td className="p-5 text-brand-primary">{formatCurrency(item.principal)}</td>
-                      <td className="p-5 text-brand-secondary">{formatCurrency(item.interest)}</td>
-                      <td className="p-5 font-mono text-white">{formatCurrency(item.outstanding)}</td>
+                      <td className="p-5 text-slate-900">{formatCurrency(item.principal)}</td>
+                      <td className="p-5 text-blue-600">{formatCurrency(item.interest)}</td>
+                      <td className="p-5 font-mono text-slate-900">{formatCurrency(item.outstanding)}</td>
                       <td className="p-5">
                         <span className={cn(
                           "px-2 py-1 rounded font-black text-[8px] uppercase tracking-widest",
-                          item.status === 'Paid' ? "bg-brand-primary/10 text-brand-primary border border-brand-primary/20" : "bg-white/5 text-zinc-600"
+                          item.status === 'Paid' ? "bg-emerald-50 text-emerald-600 border border-emerald-100" : "bg-slate-100 text-slate-400"
                         )}>
                           {item.status}
                         </span>
@@ -583,13 +584,13 @@ const LoanDetailView = ({ loanId, onBack, darkMode, onDelete, onEdit }: { loanId
         </div>
 
         <div className="space-y-10">
-          <Card className="bg-white/5 border-white/10 shadow-[0_0_50px_rgba(0,255,148,0.05)]" title="AI_STRATEGIST" icon={Sparkles}>
+          <Card className="bg-slate-50 border-slate-200 shadow-sm" title="AI_STRATEGIST" icon={Sparkles}>
             <div className="space-y-8">
               {loadingInsights ? (
                 <div className="space-y-6 animate-pulse">
-                  <div className="h-3 bg-white/5 rounded-full w-3/4"></div>
-                  <div className="h-3 bg-white/5 rounded-full w-full"></div>
-                  <div className="h-3 bg-white/5 rounded-full w-2/3"></div>
+                  <div className="h-3 bg-slate-200 rounded-full w-3/4"></div>
+                  <div className="h-3 bg-slate-200 rounded-full w-full"></div>
+                  <div className="h-3 bg-slate-200 rounded-full w-2/3"></div>
                 </div>
               ) : (
                 <div className="space-y-6">
@@ -601,10 +602,10 @@ const LoanDetailView = ({ loanId, onBack, darkMode, onDelete, onEdit }: { loanId
                       transition={{ delay: i * 0.1 }}
                       className="flex gap-4 items-start"
                     >
-                      <div className="mt-1 p-1.5 bg-brand-primary/10 rounded border border-brand-primary/20">
-                        <Zap className="w-3 h-3 text-brand-primary" />
+                      <div className="mt-1 p-1.5 bg-slate-900 rounded border border-slate-800">
+                        <Zap className="w-3 h-3 text-white" />
                       </div>
-                      <p className="text-[11px] font-bold text-zinc-400 leading-relaxed uppercase tracking-tight">{insight}</p>
+                      <p className="text-[11px] font-bold text-slate-600 leading-relaxed uppercase tracking-tight">{insight}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -664,7 +665,7 @@ export default function App() {
   const disposableIncome = profile.monthly_salary - totalEMI;
 
   return (
-    <div className="min-h-screen bg-[#0c0c0e] text-white selection:bg-brand-primary/30 selection:text-brand-primary transition-colors duration-500">
+    <div className="min-h-screen bg-[#fcfcfc] text-slate-900 selection:bg-blue-50 selection:text-blue-600 transition-colors duration-500">
       <div className="marquee-container">
         <div className="marquee-content">
           SYSTEM STATUS: OPTIMIZED • DEBT REDUCTION ACTIVE • INTEREST SAVINGS CALCULATED • CRUSHER AI v2.0 • MISSION CRITICAL DATA • SYSTEM STATUS: OPTIMIZED • DEBT REDUCTION ACTIVE • INTEREST SAVINGS CALCULATED • CRUSHER AI v2.0 • MISSION CRITICAL DATA •
@@ -690,11 +691,11 @@ export default function App() {
             >
               <div className="flex justify-between items-center mb-10">
                 <div>
-                  <h3 className="text-4xl font-display font-black text-white leading-tight uppercase tracking-tighter">Edit_Debt_Parameters</h3>
-                  <p className="text-[10px] font-black text-zinc-500 mt-2 uppercase tracking-widest">Update account identification and financial data</p>
+                  <h3 className="text-4xl font-display font-black text-slate-900 leading-tight uppercase tracking-tighter">Edit_Debt_Parameters</h3>
+                  <p className="text-[10px] font-black text-slate-400 mt-2 uppercase tracking-widest">Update account identification and financial data</p>
                 </div>
-                <button onClick={() => setEditingLoan(null)} className="p-3 hover:bg-white/5 rounded-full transition-colors">
-                  <PlusCircle className="w-6 h-6 rotate-45 text-zinc-500" />
+                <button onClick={() => setEditingLoan(null)} className="p-3 hover:bg-slate-100 rounded-full transition-colors">
+                  <PlusCircle className="w-6 h-6 rotate-45 text-slate-400" />
                 </button>
               </div>
               <LoanForm 
@@ -715,14 +716,14 @@ export default function App() {
       </AnimatePresence>
 
       {/* Sidebar */}
-      <aside className="fixed left-0 top-0 h-full w-72 bg-[#121216] border-r border-white/5 p-8 hidden xl:flex flex-col gap-12 z-20">
+      <aside className="fixed left-0 top-0 h-full w-72 bg-white border-r border-slate-200 p-8 hidden xl:flex flex-col gap-12 z-20">
         <div className="flex items-center gap-4 px-2">
-          <div className="w-12 h-12 bg-brand-primary rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(0,255,148,0.3)] animate-float">
-            <Zap className="text-black w-6 h-6 fill-black" />
+          <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center shadow-lg animate-float">
+            <Zap className="text-white w-6 h-6 fill-white" />
           </div>
           <div>
-            <h1 className="text-xl font-display font-black text-white leading-none tracking-tighter uppercase">Crusher</h1>
-            <span className="text-[9px] font-black text-brand-primary uppercase tracking-[0.3em] mt-1.5 block">Terminal v2.0</span>
+            <h1 className="text-xl font-display font-black text-slate-900 leading-none tracking-tighter uppercase">Crusher</h1>
+            <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] mt-1.5 block">Terminal v2.0</span>
           </div>
         </div>
 
@@ -740,8 +741,8 @@ export default function App() {
               className={cn(
                 "flex items-center gap-4 px-5 py-3.5 rounded-xl font-bold text-[11px] uppercase tracking-widest transition-all",
                 view === item.id 
-                  ? "bg-white/5 text-brand-primary border border-white/10 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]" 
-                  : "text-zinc-500 hover:bg-white/5 hover:text-zinc-200"
+                  ? "bg-slate-900 text-white shadow-md" 
+                  : "text-slate-400 hover:bg-slate-50 hover:text-slate-900"
               )}
             >
               <item.icon className="w-4 h-4" />
@@ -750,12 +751,12 @@ export default function App() {
           ))}
         </nav>
 
-        <div className="mt-auto p-8 bg-white/5 border border-white/5 rounded-2xl">
+        <div className="mt-auto p-8 bg-slate-50 border border-slate-200 rounded-2xl">
           <div className="flex items-center gap-2 mb-4">
-            <Sparkles className="w-4 h-4 text-brand-primary animate-pulse" />
-            <span className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em]">Intelligence</span>
+            <Sparkles className="w-4 h-4 text-slate-900" />
+            <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">Intelligence</span>
           </div>
-          <p className="text-[10px] font-bold text-zinc-300 leading-relaxed uppercase tracking-tight">
+          <p className="text-[10px] font-bold text-slate-600 leading-relaxed uppercase tracking-tight">
             Consolidating high-interest debt into a personal loan can save you up to 12% in annual interest.
           </p>
         </div>
@@ -768,7 +769,7 @@ export default function App() {
             <motion.h2 
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              className="text-6xl font-display font-black text-white leading-none tracking-tighter uppercase"
+              className="text-6xl font-display font-black text-slate-900 leading-none tracking-tighter uppercase"
             >
               {view === 'dashboard' && "Overview"}
               {view === 'loans' && "Portfolios"}
@@ -777,18 +778,18 @@ export default function App() {
               {view === 'settings' && "Settings"}
               {selectedLoanId && "Details"}
             </motion.h2>
-            <p className="text-zinc-500 font-black mt-4 flex items-center gap-3 uppercase tracking-[0.3em] text-[10px]">
-              <span className="w-2 h-2 bg-brand-primary rounded-full animate-pulse"></span>
+            <p className="text-slate-400 font-black mt-4 flex items-center gap-3 uppercase tracking-[0.3em] text-[10px]">
+              <span className="w-2 h-2 bg-slate-900 rounded-full"></span>
               System Online // User: Strategist
             </p>
           </div>
           <div className="flex items-center gap-6 w-full md:w-auto">
             <div className="relative flex-1 md:flex-none">
-              <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+              <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input 
                 type="text" 
                 placeholder="SEARCH_DEBT_DATABASE..." 
-                className="pl-12 pr-6 py-4 bg-zinc-900/50 border border-white/10 rounded-xl font-mono text-[10px] uppercase tracking-widest focus:border-brand-primary transition-all outline-none w-full md:w-80"
+                className="pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-xl font-mono text-[10px] uppercase tracking-widest focus:border-slate-900 transition-all outline-none w-full md:w-80"
               />
             </div>
           </div>
@@ -838,29 +839,29 @@ export default function App() {
                       <div className="h-[400px] w-full mt-8">
                         <ResponsiveContainer width="100%" height="100%">
                           <BarChart data={loans.map(l => ({ name: l.name, value: l.amount }))}>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
-                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#52525b', fontSize: 9, fontWeight: 800}} dy={10} />
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
+                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 9, fontWeight: 800}} dy={10} />
                             <YAxis hide />
                             <Tooltip 
-                              cursor={{fill: 'rgba(0, 255, 148, 0.05)'}}
+                              cursor={{fill: 'rgba(0, 0, 0, 0.02)'}}
                               contentStyle={{ 
-                                backgroundColor: '#09090b',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                borderRadius: '8px',
-                                color: '#fff',
-                                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)',
+                                backgroundColor: '#fff',
+                                border: '1px solid #e2e8f0',
+                                borderRadius: '12px',
+                                color: '#0f172a',
+                                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
                                 fontSize: '10px',
                                 fontWeight: 'bold',
                                 textTransform: 'uppercase'
                               }}
-                              itemStyle={{ color: '#00FF94' }}
+                              itemStyle={{ color: '#0f172a' }}
                               formatter={(value: number) => formatCurrency(value)}
                             />
-                            <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                            <Bar dataKey="value" radius={[6, 6, 0, 0]}>
                               {loans.map((entry, index) => (
                                 <Cell 
                                   key={`cell-${index}`} 
-                                  fill={index % 2 === 0 ? '#00FF94' : '#00D1FF'} 
+                                  fill={index % 2 === 0 ? '#0f172a' : '#3b82f6'} 
                                 />
                               ))}
                             </Bar>
@@ -871,7 +872,7 @@ export default function App() {
                     <Card title="Upcoming Payments" subtitle="Next 30 days">
                       <div className="space-y-4 mt-6">
                         {loans.length === 0 ? (
-                          <div className="text-center py-16 text-zinc-700">
+                          <div className="text-center py-16 text-slate-300">
                             <Clock className="w-12 h-12 mx-auto mb-4 opacity-20" />
                             <p className="text-[10px] font-black uppercase tracking-widest">System_Idle</p>
                           </div>
@@ -880,21 +881,21 @@ export default function App() {
                             <motion.div 
                               key={loan.id} 
                               whileHover={{ x: 4 }}
-                              className="group flex items-center justify-between p-4 bg-white/5 border border-white/5 rounded-xl transition-all cursor-pointer hover:border-brand-primary/30" 
+                              className="group flex items-center justify-between p-4 bg-slate-50 border border-slate-100 rounded-xl transition-all cursor-pointer hover:border-slate-900/30" 
                               onClick={() => setSelectedLoanId(loan.id)}
                             >
                               <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-white/5 border border-white/5 rounded-lg flex items-center justify-center group-hover:border-brand-primary/50 transition-colors">
-                                  <Calendar className="w-5 h-5 text-brand-primary" />
+                                <div className="w-10 h-10 bg-white border border-slate-200 rounded-lg flex items-center justify-center group-hover:border-slate-900 transition-colors">
+                                  <Calendar className="w-5 h-5 text-slate-400 group-hover:text-white" />
                                 </div>
                                 <div>
-                                  <p className="text-xs font-bold text-white leading-none">{loan.name}</p>
-                                  <p className="text-[9px] font-black text-zinc-500 mt-1 uppercase tracking-widest">Due in 4 days</p>
+                                  <p className="text-xs font-bold text-slate-900 leading-none">{loan.name}</p>
+                                  <p className="text-[9px] font-black text-slate-400 mt-1 uppercase tracking-widest">Due in 4 days</p>
                                 </div>
                               </div>
                               <div className="text-right">
-                                <p className="text-sm font-display font-bold text-white">{formatCurrency(loan.emi)}</p>
-                                <ArrowRight className="w-3 h-3 ml-auto mt-1 text-brand-primary opacity-0 group-hover:opacity-100 transition-all" />
+                                <p className="text-sm font-display font-bold text-slate-900">{formatCurrency(loan.emi)}</p>
+                                <ArrowRight className="w-3 h-3 ml-auto mt-1 text-slate-900 opacity-0 group-hover:opacity-100 transition-all" />
                               </div>
                             </motion.div>
                           ))
@@ -910,10 +911,10 @@ export default function App() {
 
               {view === 'loans' && (
                 <Card title="Debt Inventory" subtitle="Manage all active loan accounts">
-                  <div className="overflow-x-auto mt-6 rounded-xl border border-white/5">
+                  <div className="overflow-x-auto mt-6 rounded-xl border border-slate-200">
                     <table className="w-full text-left border-collapse">
-                      <thead className="bg-white/5 border-b border-white/5">
-                        <tr className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-500">
+                      <thead className="bg-slate-50 border-b border-slate-200">
+                        <tr className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">
                           <th className="p-5">Account_Name</th>
                           <th className="p-5">Principal</th>
                           <th className="p-5">Monthly_EMI</th>
@@ -922,30 +923,30 @@ export default function App() {
                           <th className="p-5"></th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-white/5">
+                      <tbody className="divide-y divide-slate-100">
                         {loans.map((loan) => (
                           <tr 
                             key={loan.id} 
-                            className="group hover:bg-white/5 transition-all cursor-pointer"
+                            className="group hover:bg-slate-50 transition-all cursor-pointer"
                             onClick={() => setSelectedLoanId(loan.id)}
                           >
                             <td className="p-5">
                               <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-white/5 border border-white/5 rounded-lg flex items-center justify-center group-hover:border-brand-primary/50 transition-all">
-                                  <Wallet className="w-4 h-4 text-brand-primary transition-all" />
+                                <div className="w-10 h-10 bg-white border border-slate-200 rounded-lg flex items-center justify-center group-hover:border-slate-900 transition-all">
+                                  <Wallet className="w-4 h-4 text-slate-400 group-hover:text-white transition-all" />
                                 </div>
                                 <div>
-                                  <span className="font-bold block text-white">{loan.name}</span>
-                                  <span className="text-[9px] font-black text-zinc-600 uppercase tracking-widest">ID: #{loan.id.toString().padStart(4, '0')}</span>
+                                  <span className="font-bold block text-slate-900">{loan.name}</span>
+                                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">ID: #{loan.id.toString().padStart(4, '0')}</span>
                                 </div>
                               </div>
                             </td>
-                            <td className="p-5 text-sm font-display font-bold text-white">{formatCurrency(loan.amount)}</td>
-                            <td className="p-5 text-sm font-display font-bold text-white">{formatCurrency(loan.emi)}</td>
+                            <td className="p-5 text-sm font-display font-bold text-slate-900">{formatCurrency(loan.amount)}</td>
+                            <td className="p-5 text-sm font-display font-bold text-slate-900">{formatCurrency(loan.emi)}</td>
                             <td className="p-5">
-                              <span className="px-2 py-0.5 bg-brand-primary/10 text-brand-primary border border-brand-primary/20 rounded-full text-[9px] font-black">{loan.interest_rate}%</span>
+                              <span className="px-2 py-0.5 bg-blue-50 text-blue-600 border border-blue-100 rounded-full text-[9px] font-black">{loan.interest_rate}%</span>
                             </td>
-                            <td className="p-5 text-sm font-display font-bold text-white">{loan.tenure_months} Mo</td>
+                            <td className="p-5 text-sm font-display font-bold text-slate-900">{loan.tenure_months} Mo</td>
                             <td className="p-5 text-right">
                               <div className="flex items-center justify-end gap-2">
                                 <button 
@@ -953,7 +954,7 @@ export default function App() {
                                     e.stopPropagation();
                                     setEditingLoan(loan);
                                   }}
-                                  className="h-9 w-9 rounded-lg border border-white/10 flex items-center justify-center bg-white/5 text-zinc-400 hover:border-brand-primary hover:text-brand-primary transition-all"
+                                  className="h-9 w-9 rounded-lg border border-slate-200 flex items-center justify-center bg-white text-slate-400 hover:border-slate-900 hover:text-slate-900 transition-all"
                                   title="Edit Loan"
                                 >
                                   <Edit className="w-4 h-4" />
@@ -981,14 +982,14 @@ export default function App() {
                                   className={cn(
                                     "h-9 rounded-lg border flex items-center justify-center transition-all gap-2 px-3 font-black text-[9px] uppercase",
                                     confirmingDeleteId === loan.id
-                                    ? 'bg-brand-accent border-brand-accent text-white'
-                                    : 'bg-white/5 border-white/10 text-brand-accent hover:border-brand-accent/50'
+                                    ? 'bg-rose-600 border-rose-600 text-white'
+                                    : 'bg-white border-slate-200 text-rose-600 hover:border-rose-600'
                                   )}
                                 >
                                   <Trash2 className="w-4 h-4" />
                                   {confirmingDeleteId === loan.id && <span>Confirm?</span>}
                                 </button>
-                                <div className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center bg-white/5 text-zinc-600 group-hover:bg-brand-primary group-hover:text-black transition-all">
+                                <div className="w-9 h-9 rounded-lg border border-slate-200 flex items-center justify-center bg-slate-50 text-slate-400 group-hover:bg-slate-900 group-hover:text-white transition-all">
                                   <ChevronRight className="w-4 h-4" />
                                 </div>
                               </div>
@@ -1021,22 +1022,22 @@ export default function App() {
                     </div>
                   </Card>
                   <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="p-6 bg-brand-primary/5 rounded-2xl border border-brand-primary/10 flex gap-4">
-                      <div className="p-3 bg-brand-primary text-black rounded-xl h-fit">
+                    <div className="p-6 bg-blue-50 rounded-2xl border border-blue-100 flex gap-4">
+                      <div className="p-3 bg-slate-900 text-white rounded-xl h-fit">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
-                        <h4 className="text-[10px] font-black text-brand-primary uppercase tracking-widest">Secure Tracking</h4>
-                        <p className="text-[10px] font-bold text-zinc-500 mt-1 leading-relaxed">Your data is stored locally and never shared with third parties.</p>
+                        <h4 className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Secure Tracking</h4>
+                        <p className="text-[10px] font-bold text-slate-500 mt-1 leading-relaxed">Your data is stored locally and never shared with third parties.</p>
                       </div>
                     </div>
-                    <div className="p-6 bg-brand-secondary/5 rounded-2xl border border-brand-secondary/10 flex gap-4">
-                      <div className="p-3 bg-brand-secondary text-black rounded-xl h-fit">
+                    <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 flex gap-4">
+                      <div className="p-3 bg-slate-900 text-white rounded-xl h-fit">
                         <Sparkles className="w-5 h-5" />
                       </div>
                       <div>
-                        <h4 className="text-[10px] font-black text-brand-secondary uppercase tracking-widest">AI Optimization</h4>
-                        <p className="text-[10px] font-bold text-zinc-500 mt-1 leading-relaxed">Instantly receive payoff strategies once you add your loan.</p>
+                        <h4 className="text-[10px] font-black text-slate-900 uppercase tracking-widest">AI Optimization</h4>
+                        <p className="text-[10px] font-bold text-slate-500 mt-1 leading-relaxed">Instantly receive payoff strategies once you add your loan.</p>
                       </div>
                     </div>
                   </div>
@@ -1056,22 +1057,22 @@ export default function App() {
                               className={cn(
                                 "w-full flex items-center justify-between p-5 rounded-xl border transition-all text-left",
                                 selectedLoanId === loan.id
-                                ? "bg-brand-primary border-brand-primary text-black shadow-[0_0_20px_rgba(0,255,148,0.3)]"
-                                : "bg-zinc-900 border-white/5 hover:border-white/20"
+                                ? "bg-slate-900 border-slate-900 text-white shadow-md"
+                                : "bg-white border-slate-200 hover:border-slate-900"
                               )}
                             >
                               <div className="flex items-center gap-4">
-                                <div className={cn("p-2 rounded-lg", selectedLoanId === loan.id ? "bg-black/10" : "bg-zinc-800")}>
-                                  <Wallet className={cn("w-4 h-4", selectedLoanId === loan.id ? "text-black" : "text-zinc-500")} />
+                                <div className={cn("p-2 rounded-lg", selectedLoanId === loan.id ? "bg-white/10" : "bg-slate-50")}>
+                                  <Wallet className={cn("w-4 h-4", selectedLoanId === loan.id ? "text-white" : "text-slate-400")} />
                                 </div>
                                 <div>
                                   <p className="font-bold text-xs">{loan.name}</p>
-                                  <p className={cn("text-[9px] font-black uppercase tracking-widest mt-0.5", selectedLoanId === loan.id ? "text-black/60" : "text-zinc-500")}>
+                                  <p className={cn("text-[9px] font-black uppercase tracking-widest mt-0.5", selectedLoanId === loan.id ? "text-white/60" : "text-slate-400")}>
                                     {formatCurrency(loan.emi)} / mo
                                   </p>
                                 </div>
                               </div>
-                              <ChevronRight className={cn("w-4 h-4 transition-transform", selectedLoanId === loan.id ? "text-black translate-x-1" : "text-zinc-700")} />
+                              <ChevronRight className={cn("w-4 h-4 transition-transform", selectedLoanId === loan.id ? "text-white translate-x-1" : "text-slate-300")} />
                             </button>
                           ))}
                           {loans.length === 0 && (
@@ -1083,12 +1084,12 @@ export default function App() {
                         </div>
                       </Card>
 
-                      <div className="p-8 bg-zinc-900 border border-white/5 rounded-2xl">
+                      <div className="p-8 bg-slate-50 border border-slate-200 rounded-2xl">
                         <div className="flex items-center gap-3 mb-4">
-                          <Sparkles className="w-5 h-5 text-brand-primary" />
-                          <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400">Intelligence_Tip</span>
+                          <Sparkles className="w-5 h-5 text-slate-900" />
+                          <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Intelligence_Tip</span>
                         </div>
-                        <p className="text-xs font-bold text-zinc-500 leading-relaxed">
+                        <p className="text-xs font-bold text-slate-600 leading-relaxed">
                           Even an extra ₹1,000 per month can shave off years from a long-term home loan. Try it now!
                         </p>
                       </div>
@@ -1127,12 +1128,12 @@ export default function App() {
                   <Card title="Financial Settings" subtitle="Manage your income and preferences">
                     <div className="mt-8 space-y-10">
                       <div className="space-y-4">
-                        <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Monthly_Salary (Net_Income)</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Monthly_Salary (Net_Income)</label>
                         <div className="relative">
-                          <span className="absolute left-5 top-1/2 -translate-y-1/2 text-brand-primary font-bold text-2xl">₹</span>
+                          <span className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-900 font-bold text-2xl">₹</span>
                           <input 
                             type="number" 
-                            className="w-full pl-12 pr-6 py-5 bg-white/5 border border-white/10 rounded-xl focus:border-brand-primary transition-all font-display font-bold text-2xl outline-none text-white"
+                            className="w-full pl-12 pr-6 py-5 bg-slate-50 border border-slate-200 rounded-xl focus:border-slate-900 transition-all font-display font-bold text-2xl outline-none text-slate-900"
                             placeholder="0"
                             value={profile.monthly_salary || ''}
                             onChange={async (e) => {
@@ -1146,30 +1147,30 @@ export default function App() {
                             }}
                           />
                         </div>
-                        <p className="text-[10px] font-bold text-zinc-600 ml-1 uppercase tracking-widest">System uses this for disposable_income_projection</p>
+                        <p className="text-[10px] font-bold text-slate-400 ml-1 uppercase tracking-widest">System uses this for disposable_income_projection</p>
                       </div>
 
-                      <div className="p-10 bg-white/5 border border-white/5 rounded-2xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 blur-[50px] rounded-full" />
+                      <div className="p-10 bg-slate-50 border border-slate-200 rounded-2xl relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 blur-[50px] rounded-full" />
                         <div className="flex items-center gap-6 mb-8 relative z-10">
-                          <div className="p-4 bg-brand-primary text-black rounded-xl">
+                          <div className="p-4 bg-slate-900 text-white rounded-xl">
                             <Zap className="w-8 h-8" />
                           </div>
                           <div>
-                            <h4 className="text-2xl font-display font-black text-white tracking-tighter">FINANCIAL_HEALTH_SCORE</h4>
-                            <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">DEBT_TO_INCOME_RATIO_ANALYSIS</p>
+                            <h4 className="text-2xl font-display font-black text-slate-900 tracking-tighter">FINANCIAL_HEALTH_SCORE</h4>
+                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">DEBT_TO_INCOME_RATIO_ANALYSIS</p>
                           </div>
                         </div>
-                        <div className="h-2 bg-white/5 rounded-full overflow-hidden relative z-10">
+                        <div className="h-2 bg-slate-200 rounded-full overflow-hidden relative z-10">
                           <motion.div 
                             initial={{ width: 0 }}
                             animate={{ width: `${Math.max(0, Math.min(100, (disposableIncome / profile.monthly_salary) * 100))}%` }}
-                            className="h-full bg-brand-primary shadow-[0_0_15px_#00FF94] rounded-full"
+                            className="h-full bg-slate-900 rounded-full"
                           />
                         </div>
                         <div className="flex justify-between mt-4 relative z-10">
-                          <span className="text-[10px] font-black text-brand-primary uppercase tracking-widest">Disposable: {((disposableIncome / profile.monthly_salary) * 100 || 0).toFixed(1)}%</span>
-                          <span className="text-[10px] font-black text-zinc-600 uppercase tracking-widest">Target: 40%+</span>
+                          <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Disposable: {((disposableIncome / profile.monthly_salary) * 100 || 0).toFixed(1)}%</span>
+                          <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Target: 40%+</span>
                         </div>
                       </div>
                     </div>

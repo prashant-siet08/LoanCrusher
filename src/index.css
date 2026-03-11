@@ -6,15 +6,14 @@
   --font-display: "Outfit", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  --color-brand-primary: #00FF94; /* Neon Emerald */
-  --color-brand-secondary: #00D1FF; /* Cyber Blue */
-  --color-brand-accent: #FF00E5; /* Neon Pink */
-  --color-brand-bg: #0c0c0e;
-  --color-brand-ink: #FFFFFF;
+  --color-brand-primary: #0f172a; /* Slate 900 */
+  --color-brand-secondary: #3b82f6; /* Blue 500 */
+  --color-brand-accent: #f43f5e; /* Rose 500 */
+  --color-brand-bg: #fcfcfc;
+  --color-brand-ink: #0f172a;
 
-  --animate-marquee: marquee 25s linear infinite;
-  --animate-float: float 4s ease-in-out infinite;
-  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
 
   @keyframes marquee {
     from { transform: translateX(0); }
@@ -23,39 +22,39 @@
 
   @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-5px); }
   }
 }
 
 @layer base {
   body {
-    @apply font-sans antialiased bg-[#0c0c0e] text-white selection:bg-brand-primary/30 selection:text-brand-primary;
+    @apply font-sans antialiased bg-[#fcfcfc] text-slate-900 selection:bg-blue-100 selection:text-blue-700;
   }
   
   h1, h2, h3 {
-    @apply font-display tracking-tight font-bold;
+    @apply font-display tracking-tight font-bold text-slate-900;
   }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-zinc-900/60 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl transition-all duration-300;
+    @apply bg-white border border-slate-200 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_4px_6px_-2px_rgba(0,0,0,0.05)] transition-all duration-300;
   }
   
   .glass-card:hover {
-    @apply border-white/20 bg-zinc-900/80 shadow-brand-primary/5;
+    @apply border-slate-300 shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)];
   }
   
   .primary-button {
-    @apply px-8 py-3 bg-brand-primary text-black font-bold rounded-lg shadow-[0_0_20px_rgba(0,255,148,0.2)] hover:shadow-[0_0_30px_rgba(0,255,148,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none uppercase tracking-wider text-xs;
+    @apply px-8 py-3 bg-slate-900 text-white font-bold rounded-xl shadow-lg hover:bg-slate-800 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 disabled:pointer-events-none uppercase tracking-widest text-[10px];
   }
 
   .secondary-button {
-    @apply px-8 py-3 bg-transparent text-white border border-white/20 font-bold rounded-lg hover:bg-white/5 hover:border-white/40 active:scale-[0.98] transition-all uppercase tracking-wider text-xs;
+    @apply px-8 py-3 bg-white text-slate-900 border border-slate-200 font-bold rounded-xl hover:bg-slate-50 hover:border-slate-300 active:scale-[0.99] transition-all uppercase tracking-widest text-[10px];
   }
 
   .marquee-container {
-    @apply overflow-hidden whitespace-nowrap bg-brand-primary text-black py-1 font-mono text-[9px] font-bold uppercase tracking-[0.3em];
+    @apply overflow-hidden whitespace-nowrap bg-slate-900 text-white py-1.5 font-mono text-[9px] font-medium uppercase tracking-[0.4em];
   }
 
   .marquee-content {
@@ -63,15 +62,15 @@
   }
 
   .stat-label {
-    @apply text-[9px] uppercase tracking-[0.2em] font-bold text-zinc-500;
+    @apply text-[10px] uppercase tracking-[0.15em] font-bold text-slate-500;
   }
 
   .stat-value {
-    @apply font-display text-3xl font-bold tracking-tighter;
+    @apply font-display text-3xl font-bold tracking-tight text-slate-900;
   }
 
   .input-field {
-    @apply w-full px-5 py-4 bg-zinc-900/80 border border-white/10 rounded-xl focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/50 transition-all outline-none font-medium text-white placeholder:text-zinc-600;
+    @apply w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:border-slate-900 focus:bg-white transition-all outline-none font-medium text-slate-900 placeholder:text-slate-400;
   }
 
   .neon-border {
@@ -80,7 +79,7 @@
 
   .neon-border::after {
     content: '';
-    @apply absolute inset-0 border border-brand-primary/20 rounded-xl pointer-events-none;
+    @apply absolute inset-0 border border-slate-200 rounded-2xl pointer-events-none;
   }
 }
 
